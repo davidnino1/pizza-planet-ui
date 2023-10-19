@@ -10,7 +10,16 @@ fetch(`http://127.0.0.1:5000/order/id/${_id}`)
     .then(order => {
         let template = createRowTemplate(order);
         $("#order").append(template);
-    });
+    })
+    .then(
+        () => {
+            $("#order-body").find("p").each(function () {
+                if ($(this).text() == " - $") {
+                    $(this).hide();
+                }
+            })
+        }
+    );
 
 /**
  * Find the template tag and populate it with the data
