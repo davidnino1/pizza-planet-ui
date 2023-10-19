@@ -34,21 +34,21 @@ function putBeverage(beverage) {
 /**
  * Get the form and submit it with fetch API
  */
-let ingredientForm = $("#ingredient-form");
-ingredientForm.submit(event => {
+let beverageForm = $("#beverage-form");
+beverageForm.submit(event => {
 
-    let ingredient = getIngredientData();
-    putIngredient(ingredient);
+    let beverage = getBeverageData();
+    putBeverage(beverage);
 
     event.preventDefault();
     event.currentTarget.reset();
-    window.location.href = '/app/ingredient/ingredients.html';
+    window.location.href = '/app/beverage/beverages.html';
 });
 
 /**
- * Gets the ingredient data with JQuery
+ * Gets the beverage data with JQuery
  */
-function getIngredientData() {
+function getBeverageData() {
     return {
         _id: $("input[id='_id']").val(),
         name: $("input[id='name']").val(),
@@ -57,12 +57,12 @@ function getIngredientData() {
 }
 
 /**
- * Shows a notification when the ingredient is accepted
+ * Shows a notification when the beverage is accepted
  */
 function showNotification() {
-    let ingredientAlert = $("#ingredient-alert");
-    ingredientAlert.toggle();
-    setTimeout(() => ingredientAlert.toggle(), 5000);
+    let beverageAlert = $("#beverage-alert");
+    beverageAlert.toggle();
+    setTimeout(() => beverageAlert.toggle(), 5000);
 }
 
 
