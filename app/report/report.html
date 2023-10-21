@@ -14,7 +14,7 @@
     />
     <link rel="stylesheet" href="/css/styles.css" />
 
-    <title>L'ultima Cena Pizzeria! - Ingredients</title>
+    <title>L'ultima Cena Pizzeria! - Order details</title>
   </head>
 
   <body>
@@ -52,51 +52,47 @@
       </nav>
     </header>
 
-    <!-- TABLE -->
+    <!-- Order Detail -->
 
     <div class="container">
       <div class="jumbotron">
-        <div id="ingredient-list">
-          <h2 class="text-center">Ingredients</h2>
-          <table id="ingredients" class="table bg-white table-bordered table-hover">
-            <thead class="thead-dark">
-              <tr class="d-flex">
-                <th class="col-2 text-center">ID</th>
-                <th class="col-4 text-center">Name</th>
-                <th class="col-3 text-center">Price</th>
-                <th class="col-3 text-center">Actions</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-
-        <div class="text-center">
-          <a class="btn btn-warning btn-lg add-ingredient" href="/app/ingredient/add-ingredient.html"
-            >Add New Ingredient</a
-          >
-        </div>
+        <div id="report"></div>
       </div>
     </div>
 
-    <template id="ingredient-item-template">
-      <tr class="d-flex">
-        <td class="col-2 text-center">{{_id}}</td>
-        <td class="col-4">{{name}}</td>
-        <td class="col-3">${{price}}</td>
-        <td class="col-3 text-center">
-          <div class="text-center">
-            <a
-              class="btn btn-success btn-sm update-ingredient"
-              href="/app/ingredient/update-ingredient.html?_id={{_id}}"
-              >Update</a
-            >
-          </div>
-        </td>
-      </tr>
+    <template id="report-template">
+      <h2 id="title" class="text-center">Report</h2>
+      <br />
+
+      <!-- REPORT DETAILS -->
+
+      <table class="table bg-white table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th class="w-30">Top Customers</th>
+            <th class="w-35">Top Ingredient</th>
+            <th class="w-35">Month with highest revenue</th>
+          </tr>
+        </thead>
+        <tbody id="report-body">
+          <tr>
+            <td id="top-customers">
+                <p>{{top_customers.0.name}} - {{top_customers.0.count}} orders</p>
+                <p>{{top_customers.1.name}} - {{top_customers.1.count}} orders</p>
+                <p>{{top_customers.2.name}} - {{top_customers.2.count}} orders</p>
+            </td>
+            <td>
+                <p id="top-ingredient">{{top_ingredient.name}} - {{top_ingredient.count}} orders!</p>
+            </td>
+          </td>
+            <td>
+                <p id="top-month">{{top_month.name}} - ${{top_month.total}}</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </template>
 
-    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -119,6 +115,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="/js/ingredient/ingredient.js"></script>
+    <script src="/js/report/report.js"></script>
   </body>
 </html>
